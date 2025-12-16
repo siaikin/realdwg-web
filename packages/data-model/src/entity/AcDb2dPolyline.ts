@@ -210,6 +210,9 @@ export class AcDb2dPolyline extends AcDbCurve {
     tmp.forEach(point =>
       points.push(new AcGePoint3d().set(point.x, point.y, this.elevation))
     )
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.lines(points)
   }
 }

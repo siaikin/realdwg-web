@@ -9,7 +9,8 @@ import {
   AcGiLineStyle,
   AcGiLineWeight,
   AcGiRenderer,
-  AcGiStyleType
+  AcGiStyleType,
+  AcGiSubEntityTraits,
 } from '@mlightcad/graphic-interface'
 
 import { AcDbObject } from '../base/AcDbObject'
@@ -655,5 +656,16 @@ export abstract class AcDbEntity extends AcDbObject {
       target.layerName = this.layer
       target.visible = this.visibility
     }
+  }
+
+  protected attachToEntityTraits(traits: AcGiSubEntityTraits) {
+    traits.rgbColor = this.rgbColor
+    traits.color = this.color
+    // traits.lineType = this.lineType
+    traits.lineTypeScale = this.linetypeScale
+    traits.lineWeight = this.lineWeight
+    traits.transparency = this.transparency
+    // traits.thickness = this.thickness
+    traits.layer = this.layer
   }
 }

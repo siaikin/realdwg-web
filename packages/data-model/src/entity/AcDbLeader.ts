@@ -321,6 +321,8 @@ export class AcDbLeader extends AcDbCurve {
    * @inheritdoc
    */
   draw(renderer: AcGiRenderer) {
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     if (this.isSplined && this.splineGeo) {
       const points = this.splineGeo.getPoints(100)
       return renderer.lines(points)

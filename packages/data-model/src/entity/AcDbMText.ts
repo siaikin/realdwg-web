@@ -583,6 +583,9 @@ export class AcDbMText extends AcDbEntity {
     const textStyle: AcGiTextStyle = {
       ...this.getTextStyle()
     }
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.mtext(mtextData, textStyle, delay)
   }
 }

@@ -255,6 +255,9 @@ export class AcDbTrace extends AcDbCurve {
       patternAngle: 0,
       patternLines: []
     }
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.area(area)
   }
 }

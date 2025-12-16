@@ -624,7 +624,11 @@ export class AcDbText extends AcDbEntity {
       drawingDirection: AcGiMTextFlowDirection.BOTTOM_TO_TOP,
       attachmentPoint: AcGiMTextAttachmentPoint.BottomLeft
     }
-    const textStyle = { ...this.getTextStyle(), color: this.rgbColor }
+
+    const textStyle = { ...this.getTextStyle() }
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.mtext(mtextData, textStyle, delay)
   }
 }

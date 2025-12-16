@@ -215,6 +215,9 @@ export class AcDbFace extends AcDbEntity {
         indices[i * 2 + 1] = (i + 1) % 4
       }
     }
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.lineSegments(buffer, 3, indices)
   }
 }

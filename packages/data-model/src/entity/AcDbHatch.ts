@@ -5,7 +5,8 @@ import {
 } from '@mlightcad/geometry-engine'
 import {
   AcGiHatchPatternLine,
-  AcGiRenderer
+  AcGiRenderer,
+  AcGiSubEntityTraits
 } from '@mlightcad/graphic-interface'
 
 import { AcDbEntity } from './AcDbEntity'
@@ -248,12 +249,18 @@ export class AcDbHatch extends AcDbEntity {
    * @inheritdoc
    */
   draw(renderer: AcGiRenderer) {
-    const traits = renderer.subEntityTraits
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
+    return renderer.area(this._geo)
+  }
+
+  protected override attachToEntityTraits(traits: AcGiSubEntityTraits): void {
+    super.attachToEntityTraits(traits)  
+
     traits.fillType = {
       solidFill: this.isSolidFill,
       patternAngle: this.patternAngle,
       patternLines: this.definitionLines
     }
-    return renderer.area(this._geo)
   }
 }

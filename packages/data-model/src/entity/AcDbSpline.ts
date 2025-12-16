@@ -195,6 +195,9 @@ export class AcDbSpline extends AcDbCurve {
    */
   draw(renderer: AcGiRenderer) {
     const points = this._geo.getPoints(100)
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.lines(points)
   }
 }

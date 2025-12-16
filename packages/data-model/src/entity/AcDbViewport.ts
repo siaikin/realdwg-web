@@ -210,6 +210,9 @@ export class AcDbViewport extends AcDbEntity {
       this.ownerId != this.database.tables.blockTable.modelSpace.objectId
     ) {
       const viewport = this.toGiViewport()
+
+      this.attachToEntityTraits(renderer.subEntityTraits)
+
       const group = renderer.group(this.createViewportRect(viewport, renderer))
       this.attachEntityInfo(group)
       return group

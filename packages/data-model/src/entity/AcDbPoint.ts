@@ -193,6 +193,8 @@ export class AcDbPoint extends AcDbEntity {
    * ```
    */
   draw(renderer: AcGiRenderer) {
+    this.attachToEntityTraits(renderer.subEntityTraits)
+   
     return renderer.point(this._geo, {
       displayMode: this.database.pdmode,
       displaySize: this.database.pdsize

@@ -455,6 +455,8 @@ export class AcDbEllipse extends AcDbCurve {
    * ```
    */
   draw(renderer: AcGiRenderer) {
-    return renderer.ellipticalArc(this._geo)
+  this.attachToEntityTraits(renderer.subEntityTraits)
+
+  return renderer.ellipticalArc(this._geo)
   }
 }

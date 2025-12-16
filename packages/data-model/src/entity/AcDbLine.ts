@@ -376,6 +376,9 @@ export class AcDbLine extends AcDbCurve {
       new AcGePoint3d(start.x, start.y, 0),
       new AcGePoint3d(end.x, end.y, 0)
     ]
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.lines(points)
   }
 }

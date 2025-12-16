@@ -342,6 +342,8 @@ export class AcDbCircle extends AcDbCurve {
    * ```
    */
   draw(renderer: AcGiRenderer) {
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.circularArc(this._geo)
   }
 }

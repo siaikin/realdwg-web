@@ -41,6 +41,9 @@ export class AcDbWipeout extends AcDbRasterImage {
     const points = this.boundaryPath()
     const area = new AcGeArea2d()
     area.add(new AcGePolyline2d(points))
+
+    this.attachToEntityTraits(renderer.subEntityTraits)
+
     return renderer.area(area)
   }
 }
